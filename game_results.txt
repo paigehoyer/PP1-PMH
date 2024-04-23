@@ -1,0 +1,33 @@
+Player guessed the number 9 in 5 guesses.
+Player guessed the number 9 in 4 guesses.
+Player guessed the number 2 in 5 guesses.
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Check if 'secret_number' is already in session state, if not, add it
+if "secret_number" not in st.session_state:
+    st.session_state['secret_number'] = secret_number
+
+# Check if 'num_guesses' is already in session state, if not, add it
+if "num_guesses" not in st.session_state:
+    st.session_state['num_guesses'] = num_guesses
+
+   #Clear session state for the next game
+      for key in st.session_state.keys():
+          st.session_state.pop(key)
+
+I used streamlits video https://youtu.be/92jUAXBmZyU?list=TLGGYqrRVqMdT0wyMzA0MjAyNA about session state and base. It explains that session state is a way to share variables between reruns and abe to store and persist state. The article streamlit wrote about session state and sessions state https://docs.streamlit.io/develop/api-reference/caching-and-state/st.session_state. sessions_state enhances the interactivity and user experience of Streamlit. It specifically allows you to store data in a way that even when/if the app reruns, the data will still be availble. Specifically in my code this allows Streamlit to remember what number the user is trying to guess and not automatically reset every time a guess is submitted. 
+
+Each time the user interacts with something (for me the button), the whole code reruns. When rerunning the code, the variables included may change (my number that the user was trying to guess reran every time they submitted a guess. Making the game virtually impossible). In some apps, it is important to be able to keep the values of some variables between reruns and alternate them on demand. That’s why the session state is important. It is our storage that keeps “information” between the different reruns.
+
+            
